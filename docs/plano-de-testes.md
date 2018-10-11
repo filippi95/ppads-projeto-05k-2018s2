@@ -1,6 +1,9 @@
 # Plano de testes - Caso de Uso CDU002
 
-Projetos cadastrados no sistema:
+Pré-requisitos:
+- Usuário deve estar logado no sistema.
+
+Os seguintes projetos devem estar cadastrados no sistema:
 - Sistema de Gerenciamento de Estoque
 
 - Sistema de locação de livros
@@ -12,13 +15,18 @@ Projetos cadastrados no sistema:
 - Sistema de Gerencimento de Vendas
 
 
+
 ## Teste 1 - Comentar o projeto 'Gerenciamento de Estoque' utilizando até 140 caracteres.
-Pré-requisitos: Deve existir um projeto cadastrado no sistema.
+Passo 1: Selecionar o projeto 'Gerenciamento de Estoque'.
+
+Passo 2: Preencher o campo de comentário com a seguinte frase: "Gostei da home-page do projeto".
+
+Passo 3: Clicar no botão de envio.
 
 Objetivo: Garantir que o campo de comentários do projeto está funcionando como deveria, isto é, o sistema está armazenando as informações 
 imputadas no campo de comentários.
 
-Resultado esperado: O sistema deve informar ao usuário que o comentário foi salvo.
+Resultado esperado: O sistema recarrega a página listando o comentário realizado.
 
 ## Teste 2 - Listar o projeto em que o comentário foi submetido.
 Pré-requisitos: Deve existir um projeto cadastrado no sistema; Ter realizado o teste 1.
