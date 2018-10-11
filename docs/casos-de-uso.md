@@ -15,6 +15,9 @@
   Comentar um projeto
   
 ### Fluxo principal: comentar o comentário de outros funcionario para agregar mais ideias ao projeto.
+  
+  Fluxo alternativo 1: Caso tenha mais de 140 caracteres, o sistema exibe uma mensagem de que não foi possível comentar pois excede o número de caracteres permitido.
+  Fluxo alternativo 2: Se um pojeto já possui mais de 10 comentários, o sistema exibe que não é possível adicionar mais comentários. 
 
 ## CDU003
   Submeter projeto para aprovação
