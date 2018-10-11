@@ -1,6 +1,18 @@
 # Plano de testes - Caso de Uso CDU002
 
-## Teste 1 - Comentar um projeto utilizando até 140 caracteres.
+Projetos cadastrados no sistema:
+- Sistema de Gerenciamento de Estoque
+
+- Sistema de locação de livros
+
+- Sistema de Pedido de Comida
+
+- Sistema de Aluguel de Carros
+
+- Sistema de Gerencimento de Vendas
+
+
+## Teste 1 - Comentar o projeto 'Gerenciamento de Estoque' utilizando até 140 caracteres.
 Pré-requisitos: Deve existir um projeto cadastrado no sistema.
 
 Objetivo: Garantir que o campo de comentários do projeto está funcionando como deveria, isto é, o sistema está armazenando as informações 
