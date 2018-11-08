@@ -41,7 +41,8 @@ $btnComentar = filter_input(INPUT_POST, 'btnComentar', FILTER_SANITIZE_STRING);
 		include_once 'conexao.php';
 		$dados_do_comentario = filter_input_array(INPUT_POST, FILTER_DEFAULT);	
         $comentario = filter_input(INPUT_POST, 'comentario', FILTER_SANITIZE_STRING);
-        $id_de_usuario = filter_input(INPUT_POST, 'id_de_usuario', FILTER_SANITIZE_STRING);
+        $id_de_usuario = ($_SESSION['id']);
+		$id_do_projeto = filter_input(INPUT_POST, 'id_do_projeto', FILTER_SANITIZE_STRING);
         
         #function myFunction2() {
         #	global $id_de_usuario, $idusuario;
@@ -51,7 +52,7 @@ $btnComentar = filter_input(INPUT_POST, 'btnComentar', FILTER_SANITIZE_STRING);
                
        #$result_id_user = "SELECT id"
         
-        $result_comentario = "INSERT INTO comentarios (id_usuario, text_comentario) VALUES ('$id_de_usuario','$comentario')";
+        $result_comentario = "INSERT INTO comentarios (id_projeto, id_usuario, text_comentario) VALUES ('$id_do_projeto','$id_de_usuario','$comentario')";
 
          
 		$resultado_do_comentario = mysqli_query($conn, $result_comentario);
@@ -69,7 +70,7 @@ $result_projetos = "SELECT * FROM projetos";
 
 #----------------------------------------------------------------------------------------------
 
-$result_comentarios = "SELECT id_usuario, text_comentario FROM comentarios";
+$result_comentarios = "SELECT id_projeto, id_usuario, text_comentario FROM comentarios";
 	$resultado_comentarios = mysqli_query($conn, $result_comentarios);
 
 #----------------------------------------------------------------------------------------------
@@ -131,7 +132,16 @@ $result_comentarios = "SELECT id_usuario, text_comentario FROM comentarios";
 			<input class="w3-panel w3-border w3-round-large" type="text" name="nomeprojeto" placeholder="Digite o nome do projeto"><br><br>
 
 			<label>ID de Usuário:</label>
-			<input class="w3-panel w3-border w3-round-large" type="text" name="idusuario" placeholder="Digite seu ID de Usuário."><br><br>
+			<?php
+			if(!empty($_SESSION['id'])){
+ 	        echo " ".$_SESSION['id']."<br>";
+            }else{
+	        $_SESSION['msg'] = "x";
+	        header("Location: index.php");	
+            }
+            ?>
+
+			
 
 			
 			<label>Descrição:</label><br>
@@ -180,10 +190,7 @@ $result_comentarios = "SELECT id_usuario, text_comentario FROM comentarios";
 									<td><?php echo $rows_projetos['nome_projeto']; ?></td>
 									<td><?php echo $rows_projetos['descricao_projeto']; ?></td>
 									<td><?php echo $rows_projetos['horas_projeto']; ?></td>
-									<td>
-										<button type="button" class="btn btn-xs btn-primary">Visualizar</button>
-										<button type="button" class="btn btn-xs btn-warning">Comentar</button>
-									</td>
+									
 								</tr>
 							<?php } ?>
 						</tbody>
@@ -205,9 +212,9 @@ $result_comentarios = "SELECT id_usuario, text_comentario FROM comentarios";
 
             <div id="id02" class="w3-indigo w3-round-large">
 			<form method="POST" action="cadastro_projeto.php">
-            <label>Comentários:</label><br>
-			<input class="w3-panel w3-border w3-round-large" type="text" name="id_de_usuario" placeholder="Digite seu ID de Usuário."><br><br>
-
+            <label>Comentar um projeto:</label><br>
+			<input class="w3-panel w3-border w3-round-large" type="text" name="id_do_projeto" placeholder="ID do projeto"><br><br>
+			
 			<textarea class="w3-round-large" charset="utf-8" type="text" name="comentario" class="msg" cols="93" rows="4" placeholder="Comentário"></textarea><br>
 			<input class="w3-btn w3-black w3-round-xlarge" type="submit" name="btnComentar"><br><br>
 		    </form>
@@ -230,6 +237,7 @@ $result_comentarios = "SELECT id_usuario, text_comentario FROM comentarios";
 					<table class="table">
 						<thead>
 							<tr>
+								<th>ID Projeto</th>
 								<th>Usuario</th>
 								<th>Comentário</th>
 							</tr>
@@ -238,11 +246,9 @@ $result_comentarios = "SELECT id_usuario, text_comentario FROM comentarios";
 							<?php while($rows_comentarios = mysqli_fetch_assoc($resultado_comentarios)){ ?>
 								<tr>
 								    <!-- RODRIGO - NOME USUÁRIO -->
+									<td><?php echo $rows_comentarios['id_projeto']; ?></td>
 									<td><?php echo $rows_comentarios['id_usuario']; ?></td>
 									<td><?php echo $rows_comentarios['text_comentario']; ?></td>
-									<td>
-										<button type="button" class="btn btn-xs btn-warning w3-teal w3-btn w3-round-xlarge">Comentar</button>
-									</td>
 								</tr>
 							<?php } ?>
 						</tbody>
