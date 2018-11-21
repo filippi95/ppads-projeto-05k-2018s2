@@ -14,7 +14,7 @@
 ## CDU002
   Comentar um projeto
   
-### Fluxo principal: comentar o comentário de outros funcionario para agregar mais ideias ao projeto.
+### Fluxo principal: comentar o comentário de outro funcionario para agregar mais ideias ao projeto.
   
   Fluxo alternativo 1: Caso tenha mais de 140 caracteres, o sistema exibe uma mensagem de que não foi possível comentar pois excede o número de caracteres permitido.
   
@@ -24,6 +24,9 @@
   Submeter projeto para aprovação
   
 ### Fluxo principal: Após a criação do projeto, e todas as caracteristicas definidas, submeter o projeto para aprovação.
+
+  Fluxo alternativo 1: O projeto pode ser aprovado pelo Aprovador de projetos.
+  Fluxo alternativo 2: O projeto pode ser recusado pelo Aprovador de projetos.
   
 ## CDU004
   Gerenciar tarefas
